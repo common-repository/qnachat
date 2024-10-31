@@ -1,0 +1,769 @@
+::-webkit-scrollbar {
+    width: 7px;
+    background-color: #d2d9e4;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #b8bac7;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #1e88e5;
+}
+#adminmenuwrap, #wpadminbar, #adminmenuback, #wpfooter{
+    display: none !important;
+}
+
+.qnac-manager-admin .cg-head {
+    width: 100%;
+    height: 40px;
+    background-color: #fff;
+    box-shadow: 0 0 10px #bcbec8;
+    padding: 10px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.qnac-manager-admin .cg-head>.left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #1f3b60;
+    font-size: 15px;
+}
+.qnac-manager-admin .cg-head .actions-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.qnac-manager-admin .cg-head .item {
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    height: 18px;
+    padding: 6px;
+    border-radius: 29px;
+    background-color: #e6e7ef;
+    border: 1px solid #e6e7ef;
+    color: #444;
+    text-decoration: none;
+}
+.qnac-manager-admin .cg-head .item.btn{
+    padding:6px 15px;
+}
+
+.qnac-manager-admin .cg-head .item.active::after{
+    content: '';
+    background-color: #fff;
+    width: 16px;
+    height: 1px;
+    position: absolute;
+    display: block;
+    top: calc(50% - 2px);
+    left: calc(50% - 8px);
+    transform: rotate(315deg);
+    border-radius: 1px;
+}
+.qnac-manager-admin .cg-head .item.active svg path{
+    stroke: white;
+}
+.qnac-manager-admin .cg-head .item.active{
+    background-color: #1a73e8;
+    border:1px solid #1a73e8;
+}
+.qnac-manager-admin .cg-head .item:hover{
+    border:1px solid #444;
+}
+.qnac-manager-admin {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    background-color: #e6e7ef;
+    height: 100%;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    font-family: Jost;
+}
+.qnac-manager-admin>.left, .qnac-manager-admin>.right {
+    width: 25%;
+    padding: 20px;
+    position: relative;
+    height: calc(100% - 80px);
+    box-sizing: border-box;
+}
+.qnac-manager-admin>.right {
+    background-color: #fff;
+    height: 100%;
+}
+.qnac-manager-admin>.center {
+    border-left: 1px solid #9e9e9e2e;
+    width: 50%;
+    border-right: 1px solid #9e9e9e2e;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 60px);
+    box-sizing: border-box;
+}
+
+.qnac-manager-admin>.center>.center {
+    flex-grow: 1;
+    padding: 20px;
+    height: calc(100% - 50px);
+    box-sizing: border-box;
+}
+.qnac-manager-admin>.right>.top {
+    display: flex;
+    flex-direction: column;
+}
+.qnac-manager-admin .right.conversation-info {
+    overflow: auto;
+    height: calc(100% - 60px);
+}
+.qnac-manager-admin>.right.conversation-info>.top>div {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 1px solid #f1f1f2;
+}
+.qnac-manager-admin .note-content {
+    background-color: #fff8e11f;
+    padding: 10px 15px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #FFE082;
+    width: 100%;
+    transition: all 0.4s ease-in-out;
+}
+.qnac-manager-admin .note-content .top {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    align-content: space-between !important;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.qnac-manager-admin .note-content.active .confirm, .qnac-manager-admin .note-content.active textarea.n-field{
+    display: block;
+}
+.qnac-manager-admin .note-content.active .edit, .qnac-manager-admin .note-content .confirm, .qnac-manager-admin .note-content.active p {
+    display: none;
+}
+.qnac-manager-admin .note-content .note-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+}
+.qnac-manager-admin .note-content textarea.n-field {
+    border: 1px solid #ffe082;
+    width: 100%;
+    display:none;
+}
+
+.qnac-manager-admin .note.active, .qnac-manager-admin .note-content.waiting {
+    display: none !important;
+}
+.qnac-manager-admin .note-content .note-actions img{
+    cursor:pointer;
+}
+.qnac-manager-admin .note-content:hover .note-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 1;
+}
+.qnac-manager-admin .per-info h4 {
+    align-self: flex-start;
+}
+.qnac-manager-admin .tag.waiting, .qnac-manager-admin .note.waiting {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    cursor: pointer;
+    flex-wrap: wrap;
+}
+.qnac-manager-admin .tag a, .qnac-manager-admin .note a {
+    font-weight: 600;
+    font-size: 11px;
+    color: #3a5373;
+}
+.qnac-manager-admin .actions {
+    flex-direction: column !important;
+    align-self: flex-start;
+    align-items: flex-start !important;
+    border-bottom: unset !important;
+}
+.qnac-manager-admin>.right .contact-items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    margin-top:15px;
+}
+.qnac-manager-admin .tags .items {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+.qnac-manager-admin>.right .contact-items img {
+    width: 17px;
+    opacity: 0.8;
+}
+.qnac-manager-admin .tags .items p {
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #1a73e8;
+    padding: 2px 15px;
+    border-radius: 15px;    
+}
+
+.qnac-manager-admin .tags.active .item p {
+    display:none;
+}
+.qnac-manager-admin .tags .tag {
+    width: 100%;
+}
+.qnac-manager-admin .tags .tag-edit p {
+    font-size: 12px;
+    color: #7e7f8f !important;
+}
+.qnac-manager-admin .tags .tag-edit {
+    margin-top: 10px !important;
+}
+.qnac-manager-admin .tags textarea.t-field {
+    width: 100%;
+    margin: 5px 0 !important;
+    border: 1px solid #f1f1f1;
+    padding: 10px;
+    font-size: 12px;
+}
+.qnac-manager-admin .contact-items .item.request {
+    cursor: pointer;
+    font-weight: 700;
+}
+.qnac-manager-admin .contact-items a {
+    font-weight: 400;
+    font-size: 13px;
+    color: #b1b2b9 !important;
+}
+.qnac-manager-admin .contact-items  .item.active{
+    padding: 7px 10px;
+    border: 1px solid #f1f1f1;
+    border-radius: 7px;
+    margin-left: -10px;
+}
+.qnac-manager-admin .contact-items  .item.active input, .qnac-manager-admin .contact-items  .item.active .confirm{
+    display:block !important;
+    opacity:1;
+}
+.qnac-manager-admin .contact-items  .item input{
+    border: unset;
+    display:none;
+    width:100%;
+}
+.qnac-manager-admin>.right .contact-items .action img{
+    opacity:0.5;
+    cursor:pointer;
+}
+.qnac-manager-admin>.right .contact-items .action img:hover{
+    opacity:1;
+}
+.qnac-manager-admin .contact-items  .item.active a, .qnac-manager-admin .contact-items  .item.active .action .edit, .qnac-manager-admin .contact-items  .item .action .confirm{
+    display:none;
+}
+.qnac-manager-admin>.right .actions a {
+    text-align: left;
+    cursor: pointer;
+    display:block;
+    font-weight: 500;
+    font-size: 13px;
+}
+.qnac-manager-admin>.right .actions a.loading::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    -webkit-animation: rotating 0.4s linear infinite;
+    margin-right: 6px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    border-left: transparent;
+    margin-bottom: -1px;
+}
+.qnac-manager-admin>.right .actions a.delete {
+    color: #F44336;
+}
+.qnac-manager-admin>.right .contact-items>div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 12px;
+    align-items: center;
+}
+.qnac-manager-admin>.right * {
+    margin: unset;
+    color: #3a5373;
+}
+.qnac-manager-admin>.right p.last-seen {
+    color: #9d9da2;
+    font-size: 12px;
+}
+.qnac-manager-admin>.center .bottom {
+    background-color: #e6e7ef;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.qnac-manager-admin>.center .bottom.cg-hide {
+    display: none;
+}
+.qnac-manager-admin>.center .bottom .input {
+    display: flex;
+    gap: 5px;
+    padding: 4px;
+    align-items: flex-end;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.qnac-manager-admin>.center .bottom .qnac-send {
+    background-color: #1E88E5;
+    text-align: center;
+    color: #fff;
+    border-radius: 30px;
+    min-width: 70px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #1e88e5;
+    transition: all 0.5s ease-out;
+}
+.qnac-manager-admin>.center .bottom .qnac-send:active {
+    background-color: #fff;
+    color: #1a73e8;
+    border: 1px solid;
+}
+.qnac-manager-admin>.center .bottom .qnac-message {
+    border: 1px solid #fff;
+    padding: 8px 15px;
+    flex: 1;
+    border-radius: 20px;
+    resize: none;
+    height: 36px;
+    max-height: 400px;
+    overflow-y: hidden;
+}
+.qnac-manager-admin>.center .bottom .qnac-message:focus {
+    border: 1px solid #f1f1f1;
+    outline:unset;
+    box-shadow:unset;
+}
+.qnac-manager-admin .center h4 {
+    text-align: center;
+    color: #B0BEC5;
+}
+.qnac-manager-admin>.left>.top * {
+    margin: unset;
+}
+.qnac-manager-admin>.left>.top input {
+    width: 100%;
+    margin: 15px 0;
+    border: 1px solid #f1f1f1;
+    padding: 10px 15px;
+    border-radius: 3px;
+}
+.qnac-manager-admin>.center .conversation-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    overflow: auto;
+    height: 100%;
+    padding: 0 7px 0 0;
+    box-sizing: border-box;
+}
+.qnac-manager-admin .conversation-content .divider::before, .qnac-manager-admin .conversation-content .divider::after {
+    width: -webkit-fill-available;
+    border-top: 1px solid #d9d9d9;
+    content: '';
+    display: inline-flex;
+    height: 0;
+}
+.qnac-manager-admin .conversation-content .divider {
+    display: inline-flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: 12px;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.qnac-manager-admin>.left .bottom {
+    overflow-y: auto;
+    height: -webkit-fill-available;
+    position: absolute;
+    box-sizing: border-box;
+    padding: 0 7px 20px 0;
+    width: calc(100% - 40px);
+}
+
+.qnac-manager-admin .conversation-content .user-input {
+    align-self: start;
+    background-color: #fff;
+    padding: 12px 16px;
+    border-radius: 0 20px 20px 20px;
+    font-size: 13px;
+    line-height: 18px;
+    max-width: 400px;
+}
+
+.qnac-manager-admin .conversation-content .reply {
+    background-color: #1a73e8;
+    color: #fff;
+    padding: 12px 16px;
+    margin-left: 90px;
+    border-radius: 20px 20px 0 20px;
+    font-size: 13px;
+    line-height: 18px;
+    align-self: end;
+}
+
+.qnac-manager-admin .conversations .item {
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.qnac-manager-admin .conversations .item .right {
+    position: relative;
+    height: 100%;
+    background-color: red;
+    align-self: flex-start;
+}
+.qnac-manager-admin .conversations .item span.unread {
+    background-color: #ff7575;
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    line-height: 18px;
+    opacity: 1;
+}
+.qnac-manager-admin .conversations .item:hover {
+    border: 1px solid #2196F3;
+}
+.qnac-manager-admin .conversations .item .center {
+    flex-grow: 1;
+    width: calc(100% - 70px);
+    color: #1f3b60;
+}
+.qnac-manager-admin .conversations .item.active, .qnac-manager-admin .conversations .item.loading{
+    background-color: #1a73e8;
+    border-color: #1a73e8;
+}
+.qnac-manager-admin .conversations .item.loading{
+    background-color: #1a73e8;
+    -webkit-animation: loading 0.5s linear infinite;
+}
+.qnac-manager-admin .conversations .item.active .center, .qnac-manager-admin .conversations .item.loading .center {
+    color: #fff;
+}
+.qnac-manager-admin .conversations .item h5{
+    font-size:13px;
+}
+.qnac-manager-admin .conversations .item .center p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    font-size: 13px;
+    opacity:0.8;
+}
+.qnac-manager-admin .conversations .item>.left {
+    width: 35px;
+    height:35px;
+}
+.qnac-manager-admin .conversations .item * {
+    margin: unset;
+}
+.qnac-manager-admin .conversations .item span {
+    opacity:0.65;
+    margin-left:10px;
+    font-size: 12px;
+}
+
+@-webkit-keyframes rotating {
+    from{
+        -webkit-transform: rotate(0deg);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+@keyframes loading {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+.qnac-manager-admin span.request{
+    cursor: pointer;
+}
+.qnac-manager-admin>.center .conversation-content.loading::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    border-radius: 30px;
+    border: 2px solid #1E88E5;
+    border-left-color: transparent;
+    -webkit-animation: rotating 0.4s linear infinite;
+}
+.qnac-manager-admin>.center .conversation-content.loading {
+    position: sticky;
+    top: 50%;
+}
+.qnac-manager-admin .conversations .item.new {
+    border-color: #fd6c6c;
+}
+.qnac-manager-admin span.pic-names {
+    width: 50px;
+    height: 50px;
+    margin: unset;
+    border-radius: 30px;
+    font-size: 17px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+.qnac-manager-admin .conversations .item span.pic-names {
+    width: 35px;
+    height: 35px;
+    opacity:1;
+    margin: unset;
+    font-size:18px;
+}
+.qnac-manager-admin .conversations .item img{
+    width:35px;
+}
+.qnac-manager-admin>.right.conversation-info .note {
+    display: flex;
+    flex-direction: row !important;
+    align-items: flex-start;
+}
+.qnac-manager-admin .conversation-info .tags.active img.edit, .qnac-manager-admin .conversation-info .tags img.confirm,.qnac-manager-admin .tag-edit{
+    display: none;
+}
+.qnac-manager-admin .conversation-info .tags.active .confirm, .qnac-manager-admin .tags.active .tag-edit {
+    display:block;
+    cursor: pointer;
+}
+.qnac-manager-admin .conversation-info .tags img.edit {
+    cursor: pointer;
+}
+.qnac-manager-admin .cg-head>.right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.qnac-notice {
+    background-color: #FFF8E1;
+    padding: 6px 15px;
+    border-radius: 20px;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+}
+.qnac-notice.cg-hide {
+    display:none;
+}
+.qnac-manager-admin .conversation-content .request.reply {
+    min-width: 170px;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.qnac-manager-admin .conversation-content .request.reply * {
+    margin: unset;
+}
+.qnac-manager-admin .conversation-content .request.reply p>b {
+    font-size: 12px;
+    text-transform: capitalize;
+}
+.qnac-manager-admin .conversation-content .request.reply p::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff6e;
+    border-radius: 10px;
+    margin-right: 6px;
+}
+.qnac-manager-admin .conversation-content .request.reply h5 {
+    font-size: 13px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+}
+.qnac-manager-admin .conversation-content .request.reply h5 span {
+    background-color: #ffffff3b;
+    padding: 1px 10px;
+    font-size: 11px;
+    border-radius: 18px;
+}
+.qnac-request-info {
+    position: fixed;
+    top: 150px;
+    left: calc(50% - 150px);
+    z-index: 99999;
+    width: 300px;
+    background-color: #fff;
+    padding: 35px 15px 15px;
+    border-radius: 3px;
+    box-shadow: 0 0 10px #78909c59;
+    display:none;
+}
+.qnac-request-info.active {
+    display:block;
+}
+.qnac-request-info *{
+    margin:unset;
+}
+.qnac-request-info .select {
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 15px;
+}
+.qnac-request-info h5.info {
+    background-color: #e6e7ef;
+    text-align: center;
+    padding: 4px 20px;
+    border-radius: 20px;
+    color: #444;
+    min-width:50px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border:1px solid #e6e7ef;
+}
+.qnac-request-info .select>div.active  h5.info {
+    background-color: #2196F3;
+    color: #fff;
+}
+.qnac-request-info h5.info:hover {
+    border: 1px solid #2196f3;
+    background-color: #fff;
+}
+.qnac-request-info span.required {
+    color: #666;
+    font-size: 11px;
+    margin-top: 10px;
+    display: none;
+}
+.qnac-request-info .item.active span.required {
+    display: inline-block;
+}
+.qnac-request-info span.required input {
+    width: 15px !important;
+    height: 15px;
+    min-width: unset;
+    border-radius: 20px;
+    font-size: 7px;
+}
+.qnac-request-info textarea {
+    width: 100%;
+    margin-bottom: 15px;
+    border-color: #e6e7ef;
+    margin-top: 5px;
+    font-size: 13px;
+    padding: 10px;
+}
+.qnac-request-info .select>div {
+    flex: 1;
+}
+.qnac-request-info .close {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    float: right;
+    background-color: #e6e7ef;
+    font-size: 20px;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 20px;
+    font-weight: 400;
+    font-family: serif;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+.qnac-request-info span.required input:checked:before {
+    display: contents;
+}
+.qnac-request-info .send-request {
+    background-color: #2196F3;
+    display: inline-block;
+    float: right;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: #fff;
+    margin-top: 15px;
+    cursor: pointer;
+    position:relative;
+}
+.qnac-request-info .send-request.loading{
+    color:transparent;
+}
+.qnac-request-info .send-request.loading::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    -webkit-animation: rotating 0.3s linear infinite;
+    border-radius: 10px;
+    border: 1px solid #fff;
+    border-left-color: #ffffff42 !important;
+    position: absolute;
+    top: calc(50% - 7px);
+    left: calc(50% - 7px);
+}
